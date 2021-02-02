@@ -11,9 +11,11 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 
 
+
+
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
-import reducer from './reducers'
+import friendsReducer from './reducers'
 
 function MainStatusBar({ backgroundColor, ...props }) {
   return (
@@ -28,7 +30,7 @@ const Tab = createBottomTabNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Provider store={createStore(reducer)}>
+      <Provider store={createStore(friendsReducer)}>
         <MainStatusBar backgroundColor={purple} barStyle="light-content" />
         <Tab.Navigator>
           <Tab.Screen name="Home" component={MainView} />
