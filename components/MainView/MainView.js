@@ -7,11 +7,16 @@ class MainView extends React.Component {
    render() {
       console.log('DECKS: ', this.props.decks['uno'].name)
       console.log('DECKS: ', Object.keys(this.props.decks))
-      
+
       return (
 
          <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-            <Text>Decks: </Text>
+            <Text>Decks: {Object.keys(this.props.decks).map((deck) => (
+               <View>
+                  <Text>{deck} </Text>
+                  <Text>{this.props.decks[deck].name} </Text>
+               </View>
+            ))}</Text>
          </View>
       );
    }
