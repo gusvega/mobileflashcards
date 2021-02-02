@@ -19,7 +19,8 @@ function QuizView({navigation}) {
           </CardItem>
         </TouchableOpacity>
       </Card>
-      <Button title='Score' onPress={() => navigation.navigate('ScoreView')}/>
+      <Text>2/10</Text>
+      <Button title='Score' onPress={() => navigation.navigate('Score')}/>
 
     </View>
   );

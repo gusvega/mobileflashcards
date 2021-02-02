@@ -9,7 +9,7 @@ function DeckCard({deck, navigation}) {
    console.log('PROPS::::', deck.name)
    return (
       <Card style={styles.card} >
-      <TouchableOpacity onPress={() => navigation.navigate('DeckView')}>
+      <TouchableOpacity onPress={() => navigation.navigate('Deck')}>
          <CardItem >
             <Body>
                <Text>

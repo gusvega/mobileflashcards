@@ -26,19 +26,19 @@ const Stack = createStackNavigator();
 function MyStack() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="MainView" component={MainView} />
-      <Stack.Screen name="DeckView" component={DeckView} />
-      <Stack.Screen name="CreateDeckView" component={CreateDeckView} />
-      <Stack.Screen name="AddCardView" component={AddCardView} />
-      <Stack.Screen name="QuizView" component={QuizView} />
-      <Stack.Screen name="ScoreView" component={ScoreView} />
+      <Stack.Screen name="Home" component={MainView} />
+      <Stack.Screen name="Deck" component={DeckView} />
+      <Stack.Screen name="Create New Deck" component={CreateDeckView} />
+      <Stack.Screen name="Add New Card" component={AddCardView} />
+      <Stack.Screen name="Quiz" component={QuizView} />
+      <Stack.Screen name="Score" component={ScoreView} />
     </Stack.Navigator>
   );
 }
 
 function MainStatusBar({ backgroundColor, ...props }) {
   return (
-    <View style={{ backgroundColor, height: (Constants.statusBarHeight) }}>
+    <View style={{ backgroundColor, height: (Constants.statusBarHeight + 20) }}>
       <StatusBar translucent backgroundColor={backgroundColor} {...props} />
     </View>
   )

@@ -6,8 +6,8 @@ function DeckView({ deck, navigation }) {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <Text>DeckViews</Text>
-      <Button title='Add Card' onPress={() => navigation.navigate('AddCardView')} />
-      <Button title='Start Quiz' onPress={() => navigation.navigate('QuizView')} />
+      <Button title='Add Card' onPress={() => navigation.navigate('Add New Card')} />
+      <Button title='Start Quiz' onPress={() => navigation.navigate('Quiz')} />
       <Button title='Delete Deck' />
 
     </View>

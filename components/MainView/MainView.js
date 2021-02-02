@@ -18,15 +18,14 @@ class MainView extends React.Component {
             {Object.keys(this.props.decks).map((deck) => (
                <DeckCard key={deck.id} deck={this.props.decks[deck]} navigation={this.props.navigation} />
             ))}
-
             <Fab
-            direction="up"
-            containerStyle={{ }}
-            style={{ backgroundColor: '#5067FF' }}
-            onPress={() => this.props.navigation.navigate('CreateDeckView')}
-            position="bottomRight">
-            <Icon name="add" />
-          </Fab>
+               direction="up"
+               containerStyle={{}}
+               style={{ backgroundColor: '#5067FF' }}
+               onPress={() => this.props.navigation.navigate('Create New Deck')}
+               position="bottomRight">
+               <Icon name="add" />
+            </Fab>
          </View>
       );
    }
