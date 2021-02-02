@@ -1,13 +1,30 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, StyleSheet, Button } from 'react-native'
+import { Form, Item, Input, Label } from 'native-base';
+
 
 function AddCardView() {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>AddCardView</Text>
+      <Form style={styles.form}>
+            <Item floatingLabel>
+              <Label>Username</Label>
+              <Input />
+            </Item>
+            <Item floatingLabel last>
+              <Label>Password</Label>
+              <Input />
+            </Item>
+            <Button title='Submit'/>
+          </Form>
     </View>
   );
-
 }
+
+const styles = StyleSheet.create({
+  form: {
+     width: 350,
+  }
+});
 
 export default AddCardView

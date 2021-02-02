@@ -10,7 +10,7 @@ function CreateDeckView() {
             <Card>
                <CardItem header button onPress={() => alert("This is Card Header")}>
                   <Form style={styles.form}>
-                     <Item fixedLabel>
+                     <Item floatingLabel>
                         <Label>Deck Name:</Label>
                         <Input />
                      </Item>
