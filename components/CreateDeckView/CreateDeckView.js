@@ -8,7 +8,7 @@ function CreateDeckView() {
       <Container>
          <Content padder>
             <Card>
-               <CardItem header button onPress={() => alert("This is Card Header")}>
+               <CardItem header button >
                   <Form style={styles.form}>
                      <Item floatingLabel>
                         <Label>Deck Name:</Label>
@@ -16,8 +16,8 @@ function CreateDeckView() {
                      </Item>
                   </Form>
                </CardItem>
-               <CardItem footer button onPress={() => alert("This is Card Footer")}>
-                  <Button title='Create Deck'/>
+               <CardItem footer button>
+                  <Button title='Submit'/>
                </CardItem>
             </Card>
          </Content>

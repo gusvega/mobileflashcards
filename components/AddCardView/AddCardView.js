@@ -8,11 +8,11 @@ function AddCardView() {
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <Form style={styles.form}>
             <Item floatingLabel>
-              <Label>Username</Label>
+              <Label>Question</Label>
               <Input />
             </Item>
             <Item floatingLabel last>
-              <Label>Password</Label>
+              <Label>Answer</Label>
               <Input />
             </Item>
             <Button title='Submit'/>

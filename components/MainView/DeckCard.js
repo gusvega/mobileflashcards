@@ -1,25 +1,27 @@
 import React from 'react'
-import {Text, View, StyleSheet, TouchableOpacity} from 'react-native'
+import { Text, View, StyleSheet, TouchableOpacity } from 'react-native'
 import { Card, CardItem, Body } from 'native-base';
 import { connect } from 'react-redux'
 
 
 
-function DeckCard({deck, navigation}) {
+function DeckCard({ deck, navigation }) {
    console.log('PROPS::::', deck.name)
    return (
       <Card style={styles.card} >
-      <TouchableOpacity onPress={() => navigation.navigate('Deck')}>
-         <CardItem >
-            <Body>
-               <Text>
-                  {deck.name}
+         <TouchableOpacity onPress={() => navigation.navigate('Deck', {
+            deck: deck,
+         })}>
+            <CardItem >
+               <Body>
+                  <Text style={styles.name}>
+                     {deck.name}
+                  </Text>
+                  <Text>
+                     {deck.cards.length} Questions
                </Text>
-               <Text>
-                  {deck.cards.length} Questions
-               </Text>
-            </Body>
-         </CardItem>
+               </Body>
+            </CardItem>
          </TouchableOpacity>
       </Card>
 
@@ -29,7 +31,10 @@ function DeckCard({deck, navigation}) {
 const styles = StyleSheet.create({
    card: {
       width: 350,
-      height: 70
+      height: 70,
+   },
+   name: {
+      fontSize: 30
    }
 });
 
