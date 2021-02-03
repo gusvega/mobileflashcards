@@ -8,47 +8,33 @@ import { addDeck } from '../../actions/index'
 
 class CreateDeckView extends React.Component {
 
+   constructor(props)
+   {
+       super(props);
+       this.state = { term : '' };
+   }
+
+   generateUID() {
+      return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
+   }
+
+   formatDeck( deckName ) {
+      return {
+         [deckName]: {
+            id: this.generateUID(),
+            name: deckName,
+            cards: []
+         }
+      }
+   }
+
    submit = () => {
       console.log('Submit Pressed')
 
-      this.props.dispatch(addDeck({
-         cuatro: {
-            id: 1,
-            name: "Deck 1",
-            cards: [
-               {
-                  '8xf0y6ziyjabvozdd253nd': {
-                     question: 'question uno',
-                     answer: 'answer uno'
-                  }
-               },
-               {
-                  '8xf0y6ziyjabvozdd253nd': {
-                     question: 'question dos',
-                     answer: 'answer dos'
-                  }
-               },
-               {
-                  '8xf0y6ziyjabvozdd253nd': {
-                     question: 'question tres',
-                     answer: 'answer tres'
-                  }
-               },
-               {
-                  '8xf0y6ziyjabvozdd253nd': {
-                     question: 'question cuatro',
-                     answer: 'answer cuatro'
-                  }
-               },
-               {
-                  '8xf0y6ziyjabvozdd253nd': {
-                     question: 'question cisco',
-                     answer: 'answer cisco'
-                  }
-               },
-            ],
-         },
-      }))
+      const formattedDeck = this.formatDeck(this.state.term)
+      console.log(formattedDeck)
+
+      this.props.dispatch(addDeck(formattedDeck))
    }
 
    render() {
@@ -56,6 +42,7 @@ class CreateDeckView extends React.Component {
       // const { state } = route.params;
       // console.log('STATE', state)
       console.log('PROPS - CREATE DECK: ', this.props)
+      console.log('TERM: ', this.state.term)
 
 
       return (
@@ -66,7 +53,7 @@ class CreateDeckView extends React.Component {
                      <Form style={styles.form}>
                         <Item floatingLabel>
                            <Label>Deck Name:</Label>
-                           <Input />
+                           <Input onChangeText={val => this.setState({ term: val })}/>
                         </Item>
                      </Form>
                   </CardItem>
