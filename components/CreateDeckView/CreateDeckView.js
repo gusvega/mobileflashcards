@@ -8,17 +8,16 @@ import { addDeck } from '../../actions/index'
 
 class CreateDeckView extends React.Component {
 
-   constructor(props)
-   {
-       super(props);
-       this.state = { term : '' };
+   constructor(props) {
+      super(props);
+      this.state = { value: '' };
    }
 
    generateUID() {
       return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
    }
 
-   formatDeck( deckName ) {
+   formatDeck(deckName) {
       return {
          [deckName]: {
             id: this.generateUID(),
@@ -29,21 +28,15 @@ class CreateDeckView extends React.Component {
    }
 
    submit = () => {
-      console.log('Submit Pressed')
-
-      const formattedDeck = this.formatDeck(this.state.term)
-      console.log(formattedDeck)
-
+      const formattedDeck = this.formatDeck(this.state.value)
       this.props.dispatch(addDeck(formattedDeck))
+      this.props.navigation.navigate("Home");
+
    }
 
    render() {
-      // const {route} = this.props
-      // const { state } = route.params;
-      // console.log('STATE', state)
       console.log('PROPS - CREATE DECK: ', this.props)
-      console.log('TERM: ', this.state.term)
-
+      console.log('value: ', this.state.value)
 
       return (
          <Container>
@@ -53,7 +46,7 @@ class CreateDeckView extends React.Component {
                      <Form style={styles.form}>
                         <Item floatingLabel>
                            <Label>Deck Name:</Label>
-                           <Input onChangeText={val => this.setState({ term: val })}/>
+                           <Input onChangeText={val => this.setState({ value: val })} />
                         </Item>
                      </Form>
                   </CardItem>
