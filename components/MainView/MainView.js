@@ -10,7 +10,7 @@ class MainView extends React.Component {
    render() {
 
       console.log('DECKS: ', this.props.decks['uno'].name)
-      console.log('DECKS: ', Object.keys(this.props.decks))
+      console.log('PROPS - MAIN VIEW: ', this.props)
 
       return (
 
@@ -22,7 +22,9 @@ class MainView extends React.Component {
                direction="up"
                containerStyle={{}}
                style={{ backgroundColor: '#5067FF' }}
-               onPress={() => this.props.navigation.navigate('Create New Deck')}
+               onPress={() => this.props.navigation.navigate('Create New Deck', {
+                  state: this.props,
+               })}
                position="bottomRight">
                <Icon name="add" />
             </Fab>

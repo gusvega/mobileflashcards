@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import { ADD_DECK } from '../actions';
 
 
 let INITIAL_STATE = {
@@ -114,6 +115,11 @@ let INITIAL_STATE = {
 
 const decksReducer = (state = INITIAL_STATE, action) => {
    switch (action.type) {
+      case ADD_DECK :
+         return {
+           ...state,
+           ...action.deck
+         }
       default:
          return state
    }
