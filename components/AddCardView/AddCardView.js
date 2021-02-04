@@ -19,22 +19,15 @@ class AddCardView extends React.Component {
     };
   }
 
-  generateUID = () => {
-    return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
-  }
-
-  formatCard = (id, question, answer) => {
+  formatCard = (question, answer) => {
     return {
-      [id]: {
-        id: id,
         question: question,
         answer: answer
-      }
     }
   }
 
   submit = () => {
-    const formattedCard = this.formatCard(this.generateUID(), this.state.question, this.state.answer)
+    const formattedCard = this.formatCard(this.state.question, this.state.answer)
     console.log('formattedCard', formattedCard)
     this.props.dispatch(addCard(this.deck, formattedCard))
     this.props.navigation.navigate("Deck");

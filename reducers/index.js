@@ -8,39 +8,24 @@ export let decks = {
       name: "Deck 1",
       cards: [
          {
-            '8xf0y6ziyjabvozdd253nd': {
-               id: '8xf0y6ziyjabvozdd253nd',
-               question: 'question uno',
-               answer: 'answer uno'
-            }
+            question: 'question uno',
+            answer: 'answer uno'
          },
          {
-            '8xf0y6ziyjabvozdd253nd': {
-               id: '8xf0y6ziyjabvozdd253nd',
-               question: 'question dos',
-               answer: 'answer dos'
-            }
+            question: 'question dos',
+            answer: 'answer dos'
          },
          {
-            '8xf0y6ziyjabvozdd253nd': {
-               id: '8xf0y6ziyjabvozdd253nd',
-               question: 'question tres',
-               answer: 'answer tres'
-            }
+            question: 'question tres',
+            answer: 'answer tres'
          },
          {
-            '8xf0y6ziyjabvozdd253nd': {
-               id: '8xf0y6ziyjabvozdd253nd',
-               question: 'question cuatro',
-               answer: 'answer cuatro'
-            }
+            question: 'question cuatro',
+            answer: 'answer cuatro'
          },
          {
-            '8xf0y6ziyjabvozdd253nd': {
-               id: '8xf0y6ziyjabvozdd253nd',
-               question: 'question cisco',
-               answer: 'answer cisco'
-            }
+            question: 'question cisco',
+            answer: 'answer cisco'
          },
       ],
    },
@@ -49,39 +34,24 @@ export let decks = {
       name: "Deck 2",
       cards: [
          {
-            '8xf0y6ziyjabvozdd253nd': {
-               id: '8xf0y6ziyjabvozdd253nd',
-               question: 'question uno',
-               answer: 'answer uno'
-            }
+            question: 'question uno',
+            answer: 'answer uno'
          },
          {
-            '8xf0y6ziyjabvozdd253nd': {
-               id: '8xf0y6ziyjabvozdd253nd',
-               question: 'question dos',
-               answer: 'answer dos'
-            }
+            question: 'question dos',
+            answer: 'answer dos'
          },
          {
-            '8xf0y6ziyjabvozdd253nd': {
-               id: '8xf0y6ziyjabvozdd253nd',
-               question: 'question tres',
-               answer: 'answer tres'
-            }
+            question: 'question tres',
+            answer: 'answer tres'
          },
          {
-            '8xf0y6ziyjabvozdd253nd': {
-               id: '8xf0y6ziyjabvozdd253nd',
-               question: 'question cuatro',
-               answer: 'answer cuatro'
-            }
+            question: 'question cuatro',
+            answer: 'answer cuatro'
          },
          {
-            '8xf0y6ziyjabvozdd253nd': {
-               id: '8xf0y6ziyjabvozdd253nd',
-               question: 'question cisco',
-               answer: 'answer cisco'
-            }
+            question: 'question cisco',
+            answer: 'answer cisco'
          },
       ],
    },
@@ -90,39 +60,24 @@ export let decks = {
       name: "Deck 3",
       cards: [
          {
-            '8xf0y6ziyjabvozdd253nd': {
-               id: '8xf0y6ziyjabvozdd253nd',
-               question: 'question uno',
-               answer: 'answer uno'
-            }
+            question: 'question uno',
+            answer: 'answer uno'
          },
          {
-            '8xf0y6ziyjabvozdd253nd': {
-               id: '8xf0y6ziyjabvozdd253nd',
-               question: 'question dos',
-               answer: 'answer dos'
-            }
+            question: 'question dos',
+            answer: 'answer dos'
          },
          {
-            '8xf0y6ziyjabvozdd253nd': {
-               id: '8xf0y6ziyjabvozdd253nd',
-               question: 'question tres',
-               answer: 'answer tres'
-            }
+            question: 'question tres',
+            answer: 'answer tres'
          },
          {
-            '8xf0y6ziyjabvozdd253nd': {
-               id: '8xf0y6ziyjabvozdd253nd',
-               question: 'question cuatro',
-               answer: 'answer cuatro'
-            }
+            question: 'question cuatro',
+            answer: 'answer cuatro'
          },
          {
-            '8xf0y6ziyjabvozdd253nd': {
-               id: '8xf0y6ziyjabvozdd253nd',
-               question: 'question cisco',
-               answer: 'answer cisco'
-            }
+            question: 'question cisco',
+            answer: 'answer cisco'
          },
       ],
    }
@@ -142,10 +97,10 @@ const decksReducer = (state = decks, action) => {
             ...state
          }
       case ADD_CARD:
-         decks[action.deck.id]['cards'].push([action.card])
+         decks[action.deck.id]['cards'].push(action.card)
          return {
             ...state
-         }  
+         }
       default:
          return state
    }

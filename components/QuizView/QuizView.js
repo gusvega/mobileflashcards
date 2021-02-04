@@ -1,27 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-
-import { Container, Header, View, DeckSwiper, Card, CardItem, Text, Left, Body, Icon, Button } from 'native-base';
-const cards = [
-  {
-    text: 'Card One',
-    name: 'One',
-  },
-  {
-    text: 'Card Two',
-    name: 'Two',
-  },
-  {
-    text: 'Card Three',
-    name: 'Three',
-  },
-];
+import { Container, Header, View, DeckSwiper, Card, CardItem, Text, Left, Body, Icon, Button, Toast } from 'native-base';
+import { Alert } from 'react-native'
 class QuizView extends Component {
 
   constructor() {
     super();
     this.state = {
-      content: false
+      content: false,
+      correct: [],
+      wrong: []
     }
   }
 
@@ -29,73 +17,87 @@ class QuizView extends Component {
     this.setState(previousState => ({ content: !previousState.content }))
   }
 
-  
-  
-
   render() {
-    const deck  = this.props.route.params.deck
+    const deck = this.props.route.params.deck
 
 
     console.log('QUIZ VIEW - PROPS', this.props)
-    console.log('QUIZ VIEW - DECK', Object.values(deck.cards[0]))
+    console.log('QUIZ VIEW - DECK', Object.values(deck.cards))
+    console.log(this.state)
 
-    const newArray = []
-
-    deck.cards.map((element, index) => {
-      console.log(Object.values(deck.cards[index]))
-      // newArray.push({})
-    });
-
-    console.log(newArray)
-
-    
 
     return (
       <Container>
         <View>
-          <Text style={{ margin:10}}> - Press on question to reveal answer</Text>
-          <Text style={{ margin:10}}> - Record your answers using the buttons below</Text>
+          <Text style={{ margin: 10 }}> - Press on question to reveal answer</Text>
+          <Text style={{ margin: 10 }}> - Record your answers using the buttons below</Text>
+          <Text style={{ margin: 10, marginBottom: 40 }}> - You can swipe or use the buttons down below</Text>
 
-          <View style={{justifyContent: 'center', alignItems: 'center' , flexDirection: 'row',}}>
 
-          <Button style={{ margin:20}}>
-            <Text>Correct</Text>
-          </Button>
-          <Button style={{ margin:20}}>
-            <Text>Wrong</Text>
-          </Button>
-          </View>
+
+
           <DeckSwiper
             ref={(c) => this._deckSwiper = c}
-            dataSource={cards}
-
+            looping={false}
+            dataSource={deck.cards}
             renderEmpty={() =>
-              <View style={{ alignSelf: "center" }}>
-                <Text>Over</Text>
+              <View style={{ justifyContent: 'center', alignItems: 'center', flexDirection: 'column', }}>
+                <Text >You got {this.state.correct.length} out of {deck.cards.length} </Text>
+                <View style={{ margin:60, flexDirection: 'row',}}>
+                  <Button style={{ margin:30}} onPress={() => {
+                          this.props.navigation.navigate("Quiz");
+                  }}><Text>New Quiz</Text></Button>
+                  <Button style={{ margin:30}} onPress={() => {
+                          this.props.navigation.navigate("Home");
+                  }}><Text>Home</Text></Button>
+                </View>
               </View>
             }
-
             renderItem={item =>
 
-              <Card style={{ elevation: 3, height: 300, justifyContent: 'center', alignItems: 'center' }} >
+              <Card style={{ elevation: 3, height: 300, alignItems: 'center', flexDirection: 'column', justifyContent: 'space-around', }} >
 
-                <CardItem >
+                <CardItem style={{ justifyContent: 'space-around', alignItems: 'center', flexDirection: 'row' }}>
                   <Left>
                     <Body>
-                      <Text style={{ fontSize:40}} onPress={this.componentHideAndShow}>{item.name}</Text>
+                      <Text style={{ fontSize: 40 }} onPress={this.componentHideAndShow}>{item.question}</Text>
+
                       {
-                        this.state.content ? <Text style={{ fontSize:20}} >NativeBase</Text> : null
+                        this.state.content ? <Text style={{ fontSize: 20 }} >{item.answer}</Text> : null
                       }
-                      
                     </Body>
                   </Left>
                 </CardItem>
 
                 <CardItem cardBody>
-                  {/* <Image style={{ height: 300, flex: 1 }} source={item.image} /> */}
+                  <View style={{ flexDirection: 'row' }}>
+
+                    <Button style={{ margin: 20 }} onPress={() => {
+                      this.setState(state => {
+                        const correct = state.correct.concat(1);
+                        return {
+                          correct
+                        };
+                      })
+                    }}>
+                      <Text>Correct</Text>
+                    </Button>
+                    <Button style={{ margin: 20 }} onPress={() => {
+                      this.setState(state => {
+                        const wrong = state.wrong.concat(1);
+                        return {
+                          wrong
+                        };
+                      })
+                    }}>
+                      <Text>Wrong</Text>
+                    </Button>
+                  </View>
                 </CardItem>
+                <View><Text style={{ fontSize: 20 }} onPress={this.componentHideAndShow}>{deck.cards.indexOf(item) + 1} / {deck.cards.length}</Text></View>
 
               </Card>
+
 
             }
           />
@@ -124,7 +126,7 @@ class QuizView extends Component {
 function mapStateToProps(state) {
   const { decks } = state
   return {
-     decks
+    decks
   }
 }
 

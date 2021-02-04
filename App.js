@@ -18,6 +18,8 @@ import AddCardView from './components/AddCardView/AddCardView';
 import QuizView from './components/QuizView/QuizView'
 import ScoreView from './components/ScoreView/ScoreView'
 import middleware from './middleware';
+import { composeWithDevTools } from 'redux-devtools-extension'
+
 
 const Stack = createStackNavigator();
 
@@ -46,7 +48,7 @@ class App extends React.Component {
   render() {
     return (
       <NavigationContainer>
-        <Provider store={createStore(reducer, middleware)}>
+        <Provider store={createStore(reducer, composeWithDevTools(middleware) )}>
           <MainStatusBar backgroundColor={purple} barStyle="light-content" />
           <MyStack />
         </Provider>
