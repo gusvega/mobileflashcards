@@ -26,7 +26,7 @@ class MainView extends React.Component {
                               {deck.name}
                            </Text>
                            <Text>
-                           {/* {deck.cards.length} Questions */}
+                           {deck.cards.length} Questions
                            </Text>
                         </Body>
                      </CardItem>

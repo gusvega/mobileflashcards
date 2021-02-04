@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { ADD_CARD, ADD_DECK } from '../actions';
+import { ADD_CARD, ADD_DECK, DELETE_DECK } from '../actions';
 
 
 export let decks = {
@@ -136,13 +136,15 @@ const decksReducer = (state = decks, action) => {
             ...state,
             ...action.deck
          }
-      case ADD_CARD:
+      case DELETE_DECK:
+         delete decks[action.deck]
          return {
-            ...state,
-            [action.deck.id]: {
-               ...state[action.deck.id],
-               cards: decks[action.deck.id]['cards'].concat([action.card])
-            }
+            ...state
+         }
+      case ADD_CARD:
+         decks[action.deck.id]['cards'].push([action.card])
+         return {
+            ...state
          }
       default:
          return state
