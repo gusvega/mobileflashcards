@@ -46,10 +46,11 @@ class QuizView extends Component {
                 <View style={{ margin: 60, flexDirection: 'row', }}>
                   <Button style={{ margin: 30 }} onPress={() => {
                     this.props.navigation.goBack()
-                  }}><Text>New Quiz</Text></Button>
+                  }}><Text>Back to Deck</Text></Button>
                   <Button style={{ margin: 30 }} onPress={() => {
-                    this.props.navigation.navigate("Home");
-                  }}><Text>Home</Text></Button>
+                    // this.props.navigation.navigate("Home");
+                    // needs work
+                  }}><Text>Restart Quiz</Text></Button> 
                 </View>
               </View>
             }

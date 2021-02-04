@@ -51,7 +51,9 @@ class CreateDeckView extends React.Component {
                      </Form>
                   </CardItem>
                   <CardItem footer>
-                     <Button title='Submit' onPress={this.handleAddDeck} />
+                     {
+                        this.state.value !== '' ? <Button title='Submit' onPress={this.handleAddDeck} /> : <Button title='Submit' disabled />
+                     }
                   </CardItem>
                </Card>
             </Content>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
+import { Text, View, StyleSheet, TouchableOpacity, SafeAreaView } from 'react-native';
 import { connect } from 'react-redux'
 import { Card, CardItem, Body, Fab, Icon } from 'native-base';
 
@@ -14,9 +14,10 @@ class MainView extends React.Component {
 
       return (
 
-         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+         <SafeAreaView style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+
             {Object.values(decks).map((deck) => (
-               <Card style={styles.card} >
+               <Card style={styles.card} key={deck.id}>
                   <TouchableOpacity onPress={() => navigation.navigate('Deck', {
                      deck: deck,
                   })}>
@@ -43,7 +44,7 @@ class MainView extends React.Component {
                position="bottomRight">
                <Icon name="add" />
             </Fab>
-         </View>
+         </SafeAreaView>
       );
    }
 }

@@ -8,7 +8,7 @@ import { addCard } from '../../actions';
 
 class AddCardView extends React.Component {
 
-  deck  = this.props.route.params.deck
+  deck = this.props.route.params.deck
 
   constructor(props) {
     super(props);
@@ -21,8 +21,8 @@ class AddCardView extends React.Component {
 
   formatCard = (question, answer) => {
     return {
-        question: question,
-        answer: answer
+      question: question,
+      answer: answer
     }
   }
 
@@ -54,8 +54,10 @@ class AddCardView extends React.Component {
             <Label>Answer</Label>
             <Input onChangeText={val => this.setState({ answer: val })} />
           </Item>
-          <Button title='Submit' onPress={this.submit} />
 
+          {
+            this.state.question !== '' && this.state.answer !== '' ? <Button title='Submit' onPress={this.submit} /> : <Button title='Submit' disabled />
+          }
         </Form>
       </View>
     );
