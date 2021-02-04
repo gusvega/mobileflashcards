@@ -30,7 +30,7 @@ class DeckView extends React.Component {
         </View>
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
           <Button title='Add Card' onPress={() => navigation.navigate('Add New Card', { deck: this.deck })} />
-          <Button title='Start Quiz' onPress={() => navigation.navigate('Quiz')} />
+          <Button title='Start Quiz' onPress={() => navigation.navigate('Quiz', { deck: this.deck })} />
           <Button title='Delete Deck' onPress={this.handleDelete} />
         </View>
       </View>

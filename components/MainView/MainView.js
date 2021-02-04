@@ -9,7 +9,7 @@ class MainView extends React.Component {
    render() {
 
       const {decks, navigation} = this.props
-      // Object.values(decks).map((deck) => console.log('Deck', deck))
+      Object.values(decks).map((deck) => console.log('Deck', deck))
       console.log('MAIN VIEW PROPS:::', this.props)
 
       return (

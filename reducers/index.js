@@ -145,7 +145,7 @@ const decksReducer = (state = decks, action) => {
          decks[action.deck.id]['cards'].push([action.card])
          return {
             ...state
-         }
+         }  
       default:
          return state
    }

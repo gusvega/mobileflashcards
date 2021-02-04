@@ -27,7 +27,7 @@ class CreateDeckView extends React.Component {
       }
    }
 
-   submit = () => {
+   handleAddDeck = () => {
       const formattedDeck = this.formatDeck(this.state.value)
       this.props.dispatch(addDeck(formattedDeck))
       this.props.navigation.navigate("Home");
@@ -51,7 +51,7 @@ class CreateDeckView extends React.Component {
                      </Form>
                   </CardItem>
                   <CardItem footer>
-                     <Button title='Submit' onPress={this.submit} />
+                     <Button title='handleAddDeck' onPress={this.handleAddDeck} />
                   </CardItem>
                </Card>
             </Content>
