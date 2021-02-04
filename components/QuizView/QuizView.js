@@ -43,12 +43,12 @@ class QuizView extends Component {
             renderEmpty={() =>
               <View style={{ justifyContent: 'center', alignItems: 'center', flexDirection: 'column', }}>
                 <Text >You got {this.state.correct.length} out of {deck.cards.length} </Text>
-                <View style={{ margin:60, flexDirection: 'row',}}>
-                  <Button style={{ margin:30}} onPress={() => {
-                          this.props.navigation.navigate("Quiz");
+                <View style={{ margin: 60, flexDirection: 'row', }}>
+                  <Button style={{ margin: 30 }} onPress={() => {
+                    this.props.navigation.goBack()
                   }}><Text>New Quiz</Text></Button>
-                  <Button style={{ margin:30}} onPress={() => {
-                          this.props.navigation.navigate("Home");
+                  <Button style={{ margin: 30 }} onPress={() => {
+                    this.props.navigation.navigate("Home");
                   }}><Text>Home</Text></Button>
                 </View>
               </View>
