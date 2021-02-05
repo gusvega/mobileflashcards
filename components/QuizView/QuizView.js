@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { Container, Header, View, DeckSwiper, Card, CardItem, Text, Left, Body, Icon, Button, Toast } from 'native-base';
-import { Alert } from 'react-native'
+import {updateState} from '../../actions/index'
 class QuizView extends Component {
 
   constructor() {
@@ -49,8 +49,9 @@ class QuizView extends Component {
                     this.props.navigation.goBack()
                   }}><Text>Back to Deck</Text></Button>
                   <Button style={{ margin: 30 }} onPress={() => {
-                    this.props.navigation.navigate("Quiz");
-                    // needs work
+                    this.props.dispatch(updateState())
+                    this.setState({ state: this.state });
+                    // needs work, not sure how to reset the quiz...
                   }}><Text>Restart Quiz</Text></Button>
                 </View>
               </View>

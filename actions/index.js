@@ -11,6 +11,12 @@ export function receiveDecks(decks) {
   }
 }
 
+export function updateState () {
+  return {
+    type: UPDATE_STATE,
+  }
+}
+
 export function addDeck (deck) {
   return {
     type: ADD_DECK,
