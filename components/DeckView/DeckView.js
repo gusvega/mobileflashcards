@@ -18,8 +18,17 @@ class DeckView extends React.Component {
   }
 
   render() {
-    // const { decks, navigation } = this.props
+
     const { navigation, decks } = this.props
+
+    let deckID = decks && decks[this.deck.id] // safety check to see if this value is available
+    let cards = deckID && deckID.cards; // safety check to see if this value is available
+    let cardsLength = cards && cards.length; // safety check to see if this value is available
+
+
+    // let user = createdBy && users[createdBy]; // safety check for accessing the user
+    // let userURL = user && user.avatarURL // safety check for fetching the url
+    // let userName = user && user.name // safety check for fetching the name
 
     console.log('DECK VIEW PROPS: ', this.props)
     console.log('DECK VIEW - DECK: ', this.props.route.params.deck)
@@ -28,7 +37,7 @@ class DeckView extends React.Component {
       <SafeAreaView style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
           <Text style={styles.name} >{this.deck.name}</Text>
-          <Text>{decks[this.deck.id]['cards'].length} Questions</Text>
+          <Text>{cardsLength} Questions</Text>
         </View>
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
           <Button title='Add Card' onPress={() => navigation.navigate('Add New Card', { deck: this.deck })} />

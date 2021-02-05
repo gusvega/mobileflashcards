@@ -1,4 +1,4 @@
-import { Notifications, Permissions } from 'expo'
+import { Notifications, Permissions } from 'expo-permissions'
 import { AsyncStorage } from 'react-native'
 
 
