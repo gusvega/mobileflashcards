@@ -19,11 +19,9 @@ class CreateDeckView extends React.Component {
 
    formatDeck(deckName) {
       return {
-         [deckName]: {
             id: this.generateUID(),
             name: deckName,
             cards: []
-         }
       }
    }
 

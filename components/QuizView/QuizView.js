@@ -9,7 +9,8 @@ class QuizView extends Component {
     this.state = {
       content: false,
       correct: [],
-      wrong: []
+      wrong: [],
+      buttonsDisabled: false
     }
   }
 
@@ -23,7 +24,7 @@ class QuizView extends Component {
 
     console.log('QUIZ VIEW - PROPS', this.props)
     console.log('QUIZ VIEW - DECK', Object.values(deck.cards))
-    console.log(this.state)
+    console.log('STATE', this.state)
 
 
     return (
@@ -48,15 +49,15 @@ class QuizView extends Component {
                     this.props.navigation.goBack()
                   }}><Text>Back to Deck</Text></Button>
                   <Button style={{ margin: 30 }} onPress={() => {
-                    // this.props.navigation.navigate("Home");
+                    this.props.navigation.navigate("Quiz");
                     // needs work
-                  }}><Text>Restart Quiz</Text></Button> 
+                  }}><Text>Restart Quiz</Text></Button>
                 </View>
               </View>
             }
             renderItem={item =>
 
-              <Card style={{ elevation: 3, height: 300, alignItems: 'center', flexDirection: 'column', justifyContent: 'space-around', }} >
+              <Card style={{ elevation: 3, height: 600, alignItems: 'center', flexDirection: 'column', justifyContent: 'space-around', }} >
 
                 <CardItem style={{ justifyContent: 'space-around', alignItems: 'center', flexDirection: 'row' }}>
                   <Left>
@@ -73,21 +74,28 @@ class QuizView extends Component {
                 <CardItem cardBody>
                   <View style={{ flexDirection: 'row' }}>
 
-                    <Button style={{ margin: 20 }} onPress={() => {
+                    <Button disabled={this.state.buttonsDisabled} style={{ margin: 20 }} onPress={() => {
                       this.setState(state => {
                         const correct = state.correct.concat(1);
+                        const buttonsDisabled = true
+
                         return {
-                          correct
+                          correct,
+                          buttonsDisabled
+
                         };
                       })
                     }}>
                       <Text>Correct</Text>
                     </Button>
-                    <Button style={{ margin: 20 }} onPress={() => {
+                    <Button disabled={this.state.buttonsDisabled} style={{ margin: 20 }} onPress={() => {
+                      console.log(this.state.buttonsDisabled)
                       this.setState(state => {
                         const wrong = state.wrong.concat(1);
+                        const buttonsDisabled = true
                         return {
-                          wrong
+                          wrong,
+                          buttonsDisabled
                         };
                       })
                     }}>
@@ -97,28 +105,46 @@ class QuizView extends Component {
                 </CardItem>
                 <View><Text style={{ fontSize: 20 }} onPress={this.componentHideAndShow}>{deck.cards.indexOf(item) + 1} / {deck.cards.length}</Text></View>
 
+                <View style={{ flexDirection: "row", flex: 1, position: "absolute", bottom: 50, left: 0, right: 0, justifyContent: 'space-between', padding: 15 }}>
+
+                  <Button iconLeft onPress={() => {
+                    this.setState({
+                      content : false,
+                      buttonsDisabled : false
+                      })
+                    this._deckSwiper._root.swipeLeft()
+                    }}>
+                    <Icon name="arrow-back" />
+                    <Text>Swipe Left</Text>
+                  </Button>
+
+                  <Button iconRight onPress={() => {
+                    this.setState({
+                      content : false,
+                      buttonsDisabled : false
+
+                      })
+                    this._deckSwiper._root.swipeRight()
+                  }}>
+                    <Text>Swipe Right</Text>
+                    <Icon name="arrow-forward" />
+                  </Button>
+
+                </View>
+
               </Card>
+
+
 
 
             }
           />
-        </View>
-
-
-
-        <View style={{ flexDirection: "row", flex: 1, position: "absolute", bottom: 50, left: 0, right: 0, justifyContent: 'space-between', padding: 15 }}>
-
-          <Button iconLeft onPress={() => this._deckSwiper._root.swipeLeft()}>
-            <Icon name="arrow-back" />
-            <Text>Swipe Left</Text>
-          </Button>
-
-          <Button iconRight onPress={() => this._deckSwiper._root.swipeRight()}>
-            <Text>Swipe Right</Text>
-            <Icon name="arrow-forward" />
-          </Button>
 
         </View>
+
+
+
+
       </Container>
     );
   }

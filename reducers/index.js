@@ -2,8 +2,8 @@ import { combineReducers } from 'redux';
 import { ADD_CARD, ADD_DECK, DELETE_DECK } from '../actions';
 
 
-export let decks = {
-   1: {
+export let decks = [
+   {
       id: 1,
       name: "Deck 1",
       cards: [
@@ -29,7 +29,7 @@ export let decks = {
          },
       ],
    },
-   2: {
+   {
       id: 2,
       name: "Deck 2",
       cards: [
@@ -55,7 +55,7 @@ export let decks = {
          },
       ],
    },
-   3: {
+   {
       id: 3,
       name: "Deck 3",
       cards: [
@@ -81,36 +81,37 @@ export let decks = {
          },
       ],
    }
-}
+]
 
 const decksReducer = (state = decks, action) => {
-   console.log('ACTION: ', action)
+   let deck = action && action.deck
 
-   let deck = action && action.deck 
-   let card = action && action.card 
+   let deckID = deck && deck.id
+   let targetDeck = deckID && decks.find( ({ id }) => id === deckID );
+   let cards = targetDeck && targetDeck.cards
 
-   let deckID = deckID && deck.id 
+   let card = action && action.card
 
-   let targetDeck = deckID && decks[deckID]; 
-   let cards = targetDeck && targetDeck.cards; 
+
 
    switch (action.type) {
       case ADD_DECK:
-         return {
-            ...state,
-            ...action.deck
-         }
+         console.log('deck', action.deck)
+      
+         decks.push(action.deck)
+         return {...state}
       case DELETE_DECK:
          delete decks[deck]
-         return {
-            ...state
-         }
+         return state
       case ADD_CARD:
-         cards.push(card)
+         console.log('deck', deck)
+         console.log('deckID', deckID)
+         console.log('targetDeck', targetDeck)
+         console.log('cards', cards)
+         console.log('card', card)
 
-         return {
-            ...state
-         }
+         cards.push(card)
+         return {...state}
       default:
          return state
    }
